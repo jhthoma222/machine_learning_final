@@ -71,13 +71,7 @@ from sklearn.model_selection import train_test_split
 features_train, features_test, labels_train, labels_test = \
     train_test_split(features, labels, test_size=0.3, random_state=42)
 
-
-
-features_list_2 = ['poi', 'salary', 'bonus', 'deferral_payments', 'total_payments', 'loan_advances', 'restricted_stock_deferred', 
-                 'deferred_income', 'total_stock_value']
-
-
-data = featureFormat(my_dataset, features_list_2, sort_keys = True)
+data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
 
 
