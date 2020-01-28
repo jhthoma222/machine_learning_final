@@ -13130,7 +13130,7 @@ div#notebook {
 <h3 id="Question-1:">Question 1:<a class="anchor-link" href="#Question-1:">&#182;</a></h3><p>Summarize for us the goal of this project and how machine learning is useful in trying to accomplish it. As part of your answer, give some background on the dataset and how it can be used to answer the project question. Were there any outliers in the data when you got it, and how did you handle those? [relevant rubric items: “data exploration”, “outlier investigation”]</p>
 <h4 id="Answer-1">Answer 1<a class="anchor-link" href="#Answer-1">&#182;</a></h4><p>The goal of this project is to use machine learning to be a detective to try and identify persons of interest (POIs) in the Enron corporate fraud case. We will acheive this goal by finding the correct machine learning algorithm to identify persons of interest.  The goal is to acheive a Precision and Recall greater than .3.</p>
 <p>I started exploring the dataset and found some basic stats.  The dataset contains 146 data points with 21 features. The data points are people within the enron organization. The features were broken down by financial features and email features. Of the 146 people in the data set, 18 of them were already marked as Persons of Interest (POI's).</p>
-<p>Next, I started exploring the dataset to see what type of outliers I might find.  The first outliers I found was 'TOTAL' and 'The travel agency in the park'.  I removed both of them. I removed the 'TOTAL' line because that's merely a spreadsheet tally line for the other 145 data records.  I also removed "The Travel Agency in the Park" which did not seem to ba an individual at Enron. I found several outliers when it came to Bonuses and Salary, but kept those outliers because they could help identify Persons of Interest.</p>
+<p>Next, I started exploring the dataset to see what type of outliers I might find.  The first outliers I found was 'TOTAL' and 'The travel agency in the park'.  I removed both of them. I removed the 'TOTAL' line because that's a sum for spreadsheet, and will interfere with our investigation.  I also removed "The Travel Agency in the Park" which did not seem to ba an individual at Enron. I also found several outliers when it came to Bonuses and Salary, but kept those outliers because they could help identify Persons of Interest.</p>
 
 </div>
 </div>
@@ -13139,7 +13139,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Question-2:">Question 2:<a class="anchor-link" href="#Question-2:">&#182;</a></h3><p>What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values.  [relevant rubric items: “create new features”, “intelligently select features”, “properly scale features”]</p>
-<h4 id="Answer-2">Answer 2<a class="anchor-link" href="#Answer-2">&#182;</a></h4><p>I created two new features: 'from_poi_ratio' and 'to_poi_ratio'.  I chose these two because I figured POI's would have a lot of contact with each other, and I thought it would be interesting to see that relationship</p>
+<h4 id="Answer-2">Answer 2<a class="anchor-link" href="#Answer-2">&#182;</a></h4><p>I created two new features: 'from_poi_ratio' and 'to_poi_ratio'.  I chose these two because I figured POI's would have a lot of contact with each other, and I thought it would be interesting to see that relationship.</p>
 <p>In order to find the most effective features for classification I decided to use “Decision Tree” to rank the features. First I put all the possible features into features_list including the new features I created.  I received and accuracy rating of 60%.  I then decided to run just the top ten of my previous decision tree.  It ranked the top 10 and I recevied an accuracy rating of 80%.  So, I decided to run with this feature list.</p>
 <blockquote><p>Accuracy: 0.8 <br>
 Decision tree algorithm time: 0.003 s <br>
@@ -13163,7 +13163,7 @@ Feature Ranking: <br>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Question-3:">Question 3:<a class="anchor-link" href="#Question-3:">&#182;</a></h3><p>What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: “pick an algorithm”]</p>
-<h4 id="Answer-3">Answer 3<a class="anchor-link" href="#Answer-3">&#182;</a></h4><p>I tried Naive Bayes, Decision Tree and Adaboost with default parameters and without any tuning.  I tested these algorithms with the same training and test data and got different results.  These algorithms produced different accuracy ratings, precision and recall.  Based on those results, I considered decided Decision Tree to be the best option to go with.  The I took Decision Tree and started trying different parameters.</p>
+<h4 id="Answer-3">Answer 3<a class="anchor-link" href="#Answer-3">&#182;</a></h4><p>I tried Naive Bayes, Decision Tree and Adaboost with default parameters and without any tuning.  I tested these algorithms with the same training and test data and got different results.  These algorithms produced different accuracy ratings, precision and recall.  Based on those results, I decided that Decision Tree will be the best option to go with.  Then I took Decision Tree and started trying different parameters for tuning.</p>
 
 </div>
 </div>
@@ -13174,7 +13174,7 @@ Feature Ranking: <br>
 <h3 id="Question-4:">Question 4:<a class="anchor-link" href="#Question-4:">&#182;</a></h3><p>What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric items: “discuss parameter tuning”, “tune the algorithm”]</p>
 <h4 id="Answer-4">Answer 4<a class="anchor-link" href="#Answer-4">&#182;</a></h4><p>Tuning the parameters of an algorithm means testing out different parameter values to find the combination that optimizes the result of the algorithm.  The purpose of this tuning is to find the best performance.  If we do not tune the parameters we might not get the best performance from the algorithm.</p>
 <p>My final algorithm was decision tree, I tried differnt parameters to tune the algorithm and found that 'entropy' gave me a better accuracy, precision and recall.</p>
-<p>Decision Tree, I used the default parameters without any tuning.</p>
+<p>Decision Tree, I used the default parameters without any tuning.  (Close to the .3 goal, but not quite)</p>
 <blockquote><p>Accuracy:  0.81 <br>
 Precision:  0.29 <br>
 Recall:  0.4 <br>
@@ -13196,7 +13196,7 @@ F1:  0.46 <br></p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Question-5:">Question 5:<a class="anchor-link" href="#Question-5:">&#182;</a></h3><p>What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric items: “discuss validation”, “validation strategy”]</p>
-<h4 id="Answer-5">Answer 5<a class="anchor-link" href="#Answer-5">&#182;</a></h4><p>Validation is the process where a trained model is evaluated with a testing data set. The testing data set is a separate portion of the same data set from which the training set is derived. The main purpose of using the testing data set is to test the generalization ability of a trained model.  A classis mistake in validation is overfitting.</p>
+<h4 id="Answer-5">Answer 5<a class="anchor-link" href="#Answer-5">&#182;</a></h4><p>Validation is the process where a trained model is evaluated with a testing data set. The testing data set is a separate portion of the same data set from which the training set is derived. The main purpose of using the testing data set is to test the generalization ability of a trained model.  The classic mistake in validation is overfitting.</p>
 <p>I separated the data into training, testing, and validation sets. Test size was 30% of the data and Train size was 70% of the data.  This was done by using train_test_split in sklearn.</p>
 
 </div>
@@ -13214,7 +13214,7 @@ My precision is 38%, which means that 38% of the people were positively identifi
 <p>Recall <br></p>
 <blockquote><p>Recall = (True Positives) / (True Positives+False Negatives) <br>
 My recall is 60%, which means that this decision tree correctly identified 60% as being a POI<br>
-I believe a higher recall is a better metric in this situation because it will tag true POI's more efficiently and have a less likely chance of tagging innocent people as POI's</p>
+I believe a higher recall is a better metric in this situation because it will tag the true POI's more efficiently and have a less likely chance of tagging innocent people as POI's</p>
 </blockquote>
 <p>F1 <br></p>
 <blockquote><p>F1 = 2 <em> (Precision</em>Recall) / (Precision+Recall) <br>
