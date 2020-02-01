@@ -16,8 +16,22 @@ from sklearn.metrics import recall_score
 
 ### Task 1: Select what features you'll use.
 
-features_list = ['poi', 'salary', 'bonus', 'deferral_payments', 'total_payments', 
-                 'loan_advances', 'restricted_stock_deferred', 'deferred_income', 'total_stock_value']
+features_list = ['poi',
+ 'to_poi_ratio',
+ 'from_poi_ratio',                
+ 'bonus',
+ 'exercised_stock_options',
+ 'expenses',
+ 'from_messages',
+ 'from_poi_to_this_person',
+ 'from_this_person_to_poi',
+ 'other',
+ 'restricted_stock',
+ 'salary',
+ 'shared_receipt_with_poi',
+ 'to_messages',
+ 'total_payments',
+ 'total_stock_value']
 
 
 ### Load the dictionary containing the dataset
@@ -67,12 +81,13 @@ features_list.append('to_poi_ratio')
 my_dataset = data_dict
 
 ### Extract features and labels from dataset for local testing
-from sklearn.model_selection import train_test_split
-features_train, features_test, labels_train, labels_test = \
-    train_test_split(features, labels, test_size=0.3, random_state=42)
 
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
+
+from sklearn.model_selection import train_test_split
+features_train, features_test, labels_train, labels_test = \
+    train_test_split(features, labels, test_size=0.3, random_state=42)
 
 
 ### Task 4: Try a varity of classifiers
@@ -147,7 +162,9 @@ print "--------------------------------------"
 ### function. Because of the small size of the dataset, the script uses
 ### stratified shuffle split cross validation. For more info: 
 ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
-
+from sklearn.model_selection import train_test_split
+features_train, features_test, labels_train, labels_test = \
+    train_test_split(features, labels, test_size=0.3, random_state=42)
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
 ### check your results. You do not need to change anything below, but make sure
