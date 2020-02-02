@@ -1,7 +1,3 @@
-#!/usr/bin/python
-
-import sys
-import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 import pprint
@@ -92,23 +88,6 @@ features_train, features_test, labels_train, labels_test = \
 
 ### Task 4: Try a varity of classifiers
 
-'''
-#Naive Bayes
-from sklearn.naive_bayes import GaussianNB
-t0 = time()
-clf = GaussianNB()
-clf.fit(features_train, labels_train)
-pred = clf.predict(features_test)
-accuracy = accuracy_score(pred,labels_test)
-precision = precision_score(labels_test, pred)
-recall = recall_score(labels_test, pred)
-print "Naive Bayes Accuracy :", accuracy
-print "training time:", round(time()-t0, 3), "s"
-print
-report = classification_report(labels_test, pred)
-print report
-print "--------------------------------------"
-'''
 
 
 #Decision Tree
@@ -134,24 +113,6 @@ print report
 print "--------------------------------------"
 
 
-'''
-#Adaboost
-from sklearn.ensemble import AdaBoostClassifier
-clf = AdaBoostClassifier()
-clf.fit(features_train, labels_train)
-pred = clf.predict(features_test)
-accuracy = accuracy_score(pred,labels_test)
-precision = precision_score(labels_test, pred)
-recall = recall_score(labels_test, pred)
-print "AdaBoost Accuracy :", accuracy
-print "training time:", round(time()-t0, 3), "s"
-print 'Precision :', precision
-print 'Recall :', recall
-print
-report = classification_report(labels_test, pred)
-print report
-print "--------------------------------------"
-'''
 
 ### Task 5: Tune your classifier to achieve better than .3 precision and recall 
 ### using our testing script. Check the tester.py script in the final project
