@@ -95,16 +95,13 @@ features_train, features_test, labels_train, labels_test = \
 '''
 #Naive Bayes
 from sklearn.naive_bayes import GaussianNB
-
 t0 = time()
-
 clf = GaussianNB()
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 accuracy = accuracy_score(pred,labels_test)
 precision = precision_score(labels_test, pred)
 recall = recall_score(labels_test, pred)
-
 print "Naive Bayes Accuracy :", accuracy
 print "training time:", round(time()-t0, 3), "s"
 print
@@ -113,8 +110,11 @@ print report
 print "--------------------------------------"
 '''
 
+
 #Decision Tree
 from sklearn import tree
+
+t0 = time()
 
 clf = tree.DecisionTreeClassifier(criterion='entropy')
 clf.fit(features_train, labels_train)
@@ -137,15 +137,12 @@ print "--------------------------------------"
 '''
 #Adaboost
 from sklearn.ensemble import AdaBoostClassifier
-
 clf = AdaBoostClassifier()
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 accuracy = accuracy_score(pred,labels_test)
 precision = precision_score(labels_test, pred)
 recall = recall_score(labels_test, pred)
-
-
 print "AdaBoost Accuracy :", accuracy
 print "training time:", round(time()-t0, 3), "s"
 print 'Precision :', precision
